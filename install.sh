@@ -80,8 +80,29 @@ chmod 755 "$ZIEL_BIN/profilkoffer"
 sed "s|^Exec=.*|Exec=$ZIEL_BIN/profilkoffer|" \
     "$HIER/desktop/profilkoffer.desktop" > "$ZIEL_DESKTOP/profilkoffer.desktop"
 
+# Die Symbole nach hicolor im eigenen Konto. Ohne sie steht im Menue ein
+# Platzhalter - der Eintrag zeigt auf »Icon=profilkoffer« ohne Pfad.
+ZIEL_ICONS="$HOME/.local/share/icons/hicolor"
+for groesse in 16 24 32 48 64 128 256 512; do
+    quelle="$HIER/assets/icon-${groesse}.png"
+    [ -f "$quelle" ] || continue
+    mkdir -p "$ZIEL_ICONS/${groesse}x${groesse}/apps"
+    cp "$quelle" "$ZIEL_ICONS/${groesse}x${groesse}/apps/profilkoffer.png"
+done
+
+if [ -f "$HIER/assets/icon.svg" ]; then
+    mkdir -p "$ZIEL_ICONS/scalable/apps"
+    cp "$HIER/assets/icon.svg" "$ZIEL_ICONS/scalable/apps/profilkoffer.svg"
+fi
+
 if command -v update-desktop-database > /dev/null; then
     update-desktop-database "$ZIEL_DESKTOP" 2> /dev/null || true
+fi
+
+# Die Arbeitsumgebung merkt eine neue Datei im Symbolverzeichnis erst,
+# wenn der Zwischenspeicher angefasst wurde.
+if command -v gtk-update-icon-cache > /dev/null; then
+    gtk-update-icon-cache -f -t "$ZIEL_ICONS" 2> /dev/null || true
 fi
 
 echo "PROFILKoffer ist eingerichtet."

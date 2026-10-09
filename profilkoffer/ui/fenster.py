@@ -31,6 +31,35 @@ from . import auswahl, hilfe
 SCHRIFT = ("Sans", 10)
 SCHRIFT_FETT = ("Sans", 10, "bold")
 
+#: Wo das Fenstersymbol liegen kann - im Paket, in der Arbeitskopie, oder
+#: dort, wohin install.sh es legt.
+SYMBOL_ORTE = (
+    Path("/usr/share/icons/hicolor/128x128/apps/profilkoffer.png"),
+    Path.home() / ".local/share/icons/hicolor/128x128/apps/profilkoffer.png",
+    Path(__file__).resolve().parent.parent.parent / "assets" / "icon-128.png",
+)
+
+
+def _fenstersymbol(wurzel: tk.Tk) -> None:
+    """Das Symbol in der Fensterleiste setzen.
+
+    Ohne das steht dort ein leeres Feld oder das Tk-Federsymbol - und wer
+    zwei Fenster offen hat, findet seines nicht wieder. Schlägt es fehl,
+    ist das kein Grund, das Programm nicht zu starten.
+    """
+    for ort in SYMBOL_ORTE:
+        if not ort.is_file():
+            continue
+        try:
+            bild = tk.PhotoImage(file=str(ort))
+        except tk.TclError:
+            continue
+        # Die Bindung an das Fenster verhindert, dass die Müllabfuhr das
+        # Bild einsammelt - Tk hält selbst keine Referenz darauf.
+        wurzel._profilkoffer_symbol = bild  # type: ignore[attr-defined]
+        wurzel.iconphoto(True, bild)
+        return
+
 
 class Fenster:
     def __init__(self, wurzel: tk.Tk, home: Path | None = None) -> None:
@@ -48,6 +77,7 @@ class Fenster:
         wurzel.title("PROFILKoffer")
         wurzel.configure(bg=farben.GRAU_PAPIER)
         wurzel.minsize(760, 700)
+        _fenstersymbol(wurzel)
 
         self._kopf()
         self._uebersicht()

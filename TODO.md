@@ -17,10 +17,6 @@ es fertig wurde.
   dieser Größe anders ist: die Dauer, der Platzbedarf beim Auspacken und
   die Frage, ob das Fenster über Minuten hinweg ansprechbar bleibt.
 
-- [ ] **Ein Symbol.** Der Desktop-Eintrag zeigt auf `Icon=profilkoffer`, und
-  das gibt es noch nicht – im Menü steht ein Platzhalter. Die Farben stehen
-  schon fest ([profilkoffer/farben.py](profilkoffer/farben.py)).
-
 - [ ] **Firefox und Chromium aufnehmen?** Die Profile liegen genauso in
   einem Ordner. Offen ist nicht das Wie, sondern ob das Programm dadurch
   unübersichtlich wird – bei zwei Programmen braucht es keine Auswahl, bei
@@ -36,5 +32,10 @@ es fertig wurde.
 
 ## Erledigt
 
+- [x] **Ein Symbol.** 09.10.2026. Ein Koffer, aus einer SVG-Quelle statt aus
+  einem Pixelbild – damit entfällt die Farbkorrektur von Hand, die in
+  SPIELRaums [icons.md](../SPIELRaum/assets/icons.md) als offener Punkt
+  steht. Siehe [assets/icons.md](assets/icons.md).
+
 - [x] **Aus dem Einzelskript ein Programm machen.** 09.10.2026. Logik von
-  der Oberfläche getrennt, 85 Tests, CI, Pakete für beide Systeme.
+  der Oberfläche getrennt, 97 Tests, CI, Pakete für beide Systeme.

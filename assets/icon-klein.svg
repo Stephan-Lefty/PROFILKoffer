@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ERZEUGT von assets/icons-bauen.py - nicht von Hand ändern.
+
+  Die Fassung für 16 bis 48 Pixel: ohne Schloss, mit kräftigerem Griff.
+
+  Anders als bei SPIELRaum und Denkzettel steht hier eine SVG am Anfang und
+  kein erzeugtes Pixelbild. In SPIELRaums assets/icons.md steht genau das als
+  offener Punkt: Alle Fassungen stammen dort aus einer PNG-Vorlage, und bei
+  jeder Änderung muss die Farbkorrektur von Hand nachgezogen werden.
+
+  Die Farben kommen aus profilkoffer/farben.py:
+      BLAU_HELL  #0e8af6    oberes Ende des Verlaufs
+      BLAU_TIEF  #0047a7    unteres Ende
+      WEISS      #ffffff    die Zeichnung
+
+  Der Schriftzug steht NICHT hier, sondern wird in assets/icons-bauen.py
+  gesetzt - damit die kleinen Größen ohne ihn auskommen. Unter 64 Pixeln ist
+  er ein grauer Streifen; dieselbe Erfahrung wie bei SPIELRaum.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="grund" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e8af6"/>
+      <stop offset="1" stop-color="#0047a7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Der Grund. Rand von 36 Pixeln, damit das Icon in einer Leiste nicht
+       an seinen Nachbarn stößt - so hält es auch SPIELRaum. -->
+  <rect x="36" y="36" width="952" height="952" rx="208" fill="url(#grund)"/>
+
+  <!-- Der Griff. Als Linie gezeichnet und nicht als Fläche: Bei 16 Pixeln
+       bleibt von einer Fläche ein Klotz übrig, von einer kräftigen Linie
+       eine erkennbare Form. -->
+  <path d="M 430 330 L 430 268 Q 430 232 466 232 L 558 232 Q 594 232 594 268 L 594 330"
+        fill="none" stroke="#ffffff" stroke-width="64" stroke-linecap="round"/>
+
+  <!-- Der Koffer. -->
+  <rect x="218" y="330" width="588" height="432" rx="64" fill="#ffffff"/>
+
+  <!-- Das Band quer darüber, in der Grundfarbe ausgespart. Ohne es ist der
+       Koffer bei kleinen Größen ein weißes Rechteck und von einem Fenster
+       oder einer Notiz nicht zu unterscheiden. -->
+  <rect x="218" y="516" width="588" height="64" fill="#1668e3"/>
+
+</svg>

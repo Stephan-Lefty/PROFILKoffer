@@ -61,6 +61,22 @@ STARTER
     chmod 755 "$ziel/usr/bin/profilkoffer"
 
     cp "$WURZEL/desktop/profilkoffer.desktop" "$ziel/usr/share/applications/"
+
+    # Die Symbole nach hicolor, in den Größen, die es gibt. Der
+    # Desktop-Eintrag zeigt auf »Icon=profilkoffer« ohne Pfad und ohne
+    # Endung - die Arbeitsumgebung sucht sich die passende Größe selbst.
+    for groesse in 16 24 32 48 64 128 256 512; do
+        quelle="$WURZEL/assets/icon-${groesse}.png"
+        [ -f "$quelle" ] || continue
+        ziel_icon="$ziel/usr/share/icons/hicolor/${groesse}x${groesse}/apps"
+        mkdir -p "$ziel_icon"
+        cp "$quelle" "$ziel_icon/profilkoffer.png"
+    done
+
+    if [ -f "$WURZEL/assets/icon.svg" ]; then
+        mkdir -p "$ziel/usr/share/icons/hicolor/scalable/apps"
+        cp "$WURZEL/assets/icon.svg" "$ziel/usr/share/icons/hicolor/scalable/apps/profilkoffer.svg"
+    fi
 }
 
 deb_bauen() {

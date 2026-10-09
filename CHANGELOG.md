@@ -57,8 +57,14 @@ Dinge zeigte, die ein Einzelskript nicht leisten kann.
   Rechner, dessen Arbeitsumgebung nicht mehr startet, ist sie der einzige Weg
   an die eigenen Mails.
 
-- **85 Tests**: 74 gegen ein untergeschobenes Home, elf für die Oberfläche
-  unter `xvfb`. Kein Test fasst ein echtes Profil an.
+- **Ein Symbol**, gebaut aus einer SVG-Quelle statt aus einem Pixelbild. Ein
+  Koffer mit Band und Schloss; unter 64 Pixeln ohne Schriftzug, unter 48 auch
+  ohne Schloss. In SPIELRaums `assets/icons.md` steht die fehlende SVG als
+  offener Punkt – hier entfällt damit die Farbkorrektur von Hand. Siehe
+  [assets/icons.md](assets/icons.md).
+
+- **97 Tests**: 74 gegen ein untergeschobenes Home, elf für die Oberfläche
+  unter `xvfb`, zwölf für die Symbole. Kein Test fasst ein echtes Profil an.
 
 ### Aus dem Vorläufer gelernt
 

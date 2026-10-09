@@ -1,5 +1,7 @@
 [Deutsch](README.md) | [English](README.en.md) | [Änderungsprotokoll](CHANGELOG.md) | [TODO](TODO.md) | [Anleitungen](docs/README.md)
 
+<p align="center"><img src="assets/icon-256.png" width="160" alt="PROFILKoffer"></p>
+
 # PROFILKoffer
 
 Thunderbird und Vivaldi von einem Rechner auf den anderen – mit allem, was
@@ -15,6 +17,13 @@ auf dem anderen Rechner wieder ein. Hinterher ist der Stand derselbe – nicht
 Das ist nicht selbstverständlich: Zwischen Python 3.13 (Debian) und 3.14
 (Manjaro) hat sich geändert, wie Archive ausgepackt werden, und genau daran
 wäre der Umzug in eine Richtung gescheitert.
+
+## Wie es aussieht
+
+![Das Fenster von PROFILKoffer](docs/bilder/fenster.png)
+
+Zwei Knöpfe, ein Verlauf darunter, **F1** für die Hilfe. Mehr braucht ein
+Umzug nicht.
 
 ## Was mitgenommen wird
 

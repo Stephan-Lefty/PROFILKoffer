@@ -1,5 +1,7 @@
 [Deutsch](README.md) | [English](README.en.md) | [Changelog](CHANGELOG.md) | [TODO](TODO.en.md) | [Guides](docs/README.md)
 
+<p align="center"><img src="assets/icon-256.png" width="160" alt="PROFILKoffer"></p>
+
 # PROFILKoffer
 
 Moving Thunderbird and Vivaldi from one computer to another – with
@@ -16,6 +18,12 @@ other machine. Afterwards the state is the same one – not a similar one.
 is not a given: the default for unpacking archives changed between Python
 3.13 (Debian) and 3.14 (Manjaro), and the move would have failed in one
 direction because of it.
+
+## What it looks like
+
+![The PROFILKoffer window](docs/bilder/fenster.png)
+
+Two buttons, a log below them, **F1** for help. A move needs no more.
 
 ## What travels
 

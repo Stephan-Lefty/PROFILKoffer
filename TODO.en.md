@@ -16,10 +16,6 @@ items are not deleted but moved down – with the date they were done.
   at that size: the duration, the space needed while unpacking, and whether
   the window stays responsive over several minutes.
 
-- [ ] **An icon.** The desktop entry points at `Icon=profilkoffer`, which
-  does not exist yet – the menu shows a placeholder. The colours are already
-  settled ([profilkoffer/farben.py](profilkoffer/farben.py)).
-
 - [ ] **Add Firefox and Chromium?** Their profiles live in a single folder
   just the same. The open question is not how, but whether the program
   becomes cluttered – with two programs no selection is needed, with five it
@@ -35,5 +31,9 @@ items are not deleted but moved down – with the date they were done.
 
 ## Done
 
+- [x] **An icon.** 2026-10-09. A suitcase, built from an SVG source rather
+  than a bitmap – which removes the manual colour correction listed as an
+  open point in SPIELRaum's icons.md. See [assets/icons.md](assets/icons.md).
+
 - [x] **Turn the single script into a program.** 2026-10-09. Logic separated
-  from the interface, 85 tests, CI, packages for both systems.
+  from the interface, 97 tests, CI, packages for both systems.
