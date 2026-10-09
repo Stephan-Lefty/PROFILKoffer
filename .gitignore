@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# Gebaute Pakete. Sie entstehen aus packaging/bauen.sh und gehören an ein
+# Release, nicht in die Geschichte.
+packaging/fertig/
+
+# Sicherungen enthalten Konten und Passwörter. Sie dürfen unter keinen
+# Umständen hier landen - tests/test_keine_echten_daten.py prüft das
+# zusätzlich, weil eine Zeile in dieser Datei eine Zeile ist, die man
+# auch versehentlich löscht.
+*.tar.gz
+*_alt_*/

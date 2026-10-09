@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=PROFILKoffer
+GenericName=Profilumzug für Thunderbird und Vivaldi
+GenericName[en]=Profile migration for Thunderbird and Vivaldi
+Comment=Konten, Passwörter, Lesezeichen und Einstellungen auf einen anderen Rechner bringen
+Comment[en]=Move accounts, passwords, bookmarks and settings to another computer
+Exec=profilkoffer
+Icon=profilkoffer
+Terminal=false
+Categories=Utility;Archiving;
+Keywords=Umzug;Sicherung;Backup;Thunderbird;Vivaldi;Profil;Lesezeichen;Konten;Stick;
+Keywords[en]=migration;backup;thunderbird;vivaldi;profile;bookmarks;accounts;usb;
+StartupNotify=true
+StartupWMClass=profilkoffer

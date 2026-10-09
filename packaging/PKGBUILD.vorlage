@@ -1,0 +1,19 @@
+# Vorlage für packaging/bauen.sh. @FASSUNG@ wird dort ersetzt.
+#
+# Gebaut wird aus einem bereits fertigen Dateibaum (Verzeichnis »baum«),
+# nicht aus den Quellen: Derselbe Baum geht in das Debian- und in das
+# Arch-Paket. Zwei getrennte Bauvorschriften, die dasselbe tun sollen,
+# laufen über kurz oder lang auseinander.
+
+pkgname=profilkoffer
+pkgver=@FASSUNG@
+pkgrel=1
+pkgdesc="Thunderbird und Vivaldi von einem Rechner auf den anderen"
+arch=('any')
+license=('MIT')
+depends=('python>=3.11' 'tk' 'util-linux' 'procps-ng')
+options=('!strip')
+
+package() {
+  cp -r "$startdir/baum/." "$pkgdir/"
+}

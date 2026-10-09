@@ -1,0 +1,76 @@
+name: Tests
+
+# Sparsam von Anfang an. GitHub rundet jeden einzelnen Job auf volle Minuten
+# auf; ein Job, der zwanzig Sekunden läuft, zählt als eine Minute. Bei
+# MailBurg summierte sich eine zu breit angelegte Matrix an einem einzigen
+# Arbeitstag auf 1.800 von 2.000 Minuten.
+#
+# PROFILKoffer ist ein Linux-Programm - Windows und macOS stellen sich hier
+# gar nicht erst. Geprüft wird gegen die Python-Fassungen der beiden
+# Zielsysteme:
+#
+#     Debian 13 (Trixie)   Python 3.13
+#     Manjaro              Python 3.14
+#
+# Dazu 3.11 als Untergrenze. Die drei sind nicht beliebig: Zwischen 3.13 und
+# 3.14 hat sich die Vorgabe für tarfile.extractall geändert, und genau daran
+# wäre der Umzug zwischen den beiden Rechnern gescheitert.
+
+on:
+  push:
+    # An Text ändert sich durch einen Testlauf nichts.
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "LICENSE"
+  pull_request:
+  workflow_dispatch:
+
+# Wer dreimal hintereinander pusht, braucht nur die Antwort auf den letzten.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # Tkinter kommt nicht aus PyPI, sondern aus der Distribution. Ohne
+      # diesen Schritt würden die Oberflächentests stillschweigend
+      # übersprungen - und ein übersprungener Test, den niemand bemerkt,
+      # ist schlimmer als keiner.
+      - name: Tkinter und ein Grafikserver
+        run: sudo apt-get update && sudo apt-get install -y python3-tk xvfb
+
+      - name: Einrichten
+        run: pip install -e ".[entwicklung]"
+
+      - name: Tests
+        run: xvfb-run -a python -m unittest discover -s tests -v
+
+      # Die Kommandozeile muss auf einem Rechner durchlaufen, auf dem weder
+      # Thunderbird noch Vivaldi liegt und kein Stick steckt. Genau dort
+      # fällt auf, wenn irgendwo ein Pfad angenommen statt nachgesehen wird.
+      - name: Kommandozeile auf nacktem System
+        run: |
+          python -m profilkoffer --version
+          python -m profilkoffer profile
+          python -m profilkoffer laufwerke
+          python -m profilkoffer sicherungen || test $? -eq 1
+
+      # Der Kern darf ohne Oberfläche ladbar sein. Auf einem Server ohne
+      # Grafik ist die Kommandozeile der einzige Weg an die eigenen Mails.
+      - name: Kern ohne Tkinter
+        run: python -c "import profilkoffer.sicherung, profilkoffer.laufwerke, profilkoffer.profile"
