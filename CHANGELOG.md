@@ -7,6 +7,16 @@ Alle nennenswerten Änderungen an PROFILKoffer stehen hier.
 Das Format folgt [Keep a Changelog](https://keepachangelog.com/de/1.1.0/),
 die Versionsnummern folgen [Semantic Versioning](https://semver.org/lang/de/).
 
+## 0.1.1 – 2026-11-05
+
+### Geändert
+
+- Das Programm erscheint jetzt in der Software-Verwaltung (GNOME
+  Software, KDE Discover, Cinnamons Anwendungsverwaltung) - mit
+  Beschreibung und zum Entfernen auf Knopfdruck. Dafür fehlten bisher
+  die AppStream-Angaben; ohne sie kennen die Verwaltungen ein Programm
+  schlicht nicht.
+
 ## [0.1.0] – 2026-10-09
 
 Die erste Fassung. Entstanden aus einem Einzelskript, das am 08.10.2026 eine
