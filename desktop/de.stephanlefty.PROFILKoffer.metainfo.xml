@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AppStream-Metadaten. Ohne diese Datei kennen die Software-Verwaltungen
+  (GNOME Software, KDE Discover, Cinnamons Anwendungsverwaltung) das
+  Programm nicht - es taucht dort weder unter den installierten
+  Anwendungen auf noch lässt es sich von dort entfernen.
+-->
+<component type="desktop-application">
+  <id>de.stephanlefty.PROFILKoffer</id>
+
+  <name>PROFILKoffer</name>
+  <summary>Konten, Passwörter und Einstellungen auf einen anderen Rechner bringen</summary>
+
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+
+  <developer id="de.stephanlefty">
+    <name>Stephan Rösner</name>
+  </developer>
+
+  <description>
+    <p>
+      Bringt Thunderbird und Vivaldi von einem Rechner auf den anderen -
+      mit allem, was dazugehört: Konten, Passwörter, Lesezeichen,
+      Erweiterungen und Einstellungen.
+    </p>
+    <p>
+      Gedacht für den Umzug zwischen zwei Systemen, auch über
+      Distributionsgrenzen hinweg.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">profilkoffer.desktop</launchable>
+
+  <!--
+    Das Symbol liegt unter seinem schlichten Namen im Symbolthema
+    (~/.local/share/icons/hicolor/<groesse>/apps/profilkoffer.png).
+  -->
+  <icon type="stock">profilkoffer</icon>
+
+  <categories>
+    <category>Utility</category>
+    <category>Archiving</category>
+  </categories>
+
+  <keywords>
+    <keyword>Umzug</keyword>
+    <keyword>Thunderbird</keyword>
+    <keyword>Vivaldi</keyword>
+    <keyword>Profil</keyword>
+  </keywords>
+
+  <url type="homepage">https://github.com/Stephan-Lefty/PROFILKoffer</url>
+  <url type="bugtracker">https://github.com/Stephan-Lefty/PROFILKoffer/issues</url>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="0.1.0" date="2026-11-05"/>
+  </releases>
+</component>

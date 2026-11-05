@@ -79,6 +79,17 @@ chmod 755 "$ZIEL_BIN/profilkoffer"
 
 sed "s|^Exec=.*|Exec=$ZIEL_BIN/profilkoffer|" \
     "$HIER/desktop/profilkoffer.desktop" > "$ZIEL_DESKTOP/profilkoffer.desktop"
+# Die Angaben für die Software-Verwaltung. Ohne sie kennt GNOME
+# Software, Discover oder pamac das Programm nicht - es erscheint dort
+# weder unter den installierten noch lässt es sich von dort entfernen.
+METADATEN="${XDG_DATA_HOME:-$HOME/.local/share}/metainfo"
+mkdir -p "$METADATEN"
+cp "$HIER/desktop/"*.metainfo.xml "$METADATEN/" 2>/dev/null || true
+# Unter KDE bliebe der Menüeintrag sonst bis zum nächsten Anmelden
+# unsichtbar. Anderswo läuft die Zeile ins Leere.
+command -v kbuildsycoca6 >/dev/null 2>&1 \
+    && kbuildsycoca6 --noincremental >/dev/null 2>&1 || true
+
 
 # Die Symbole nach hicolor im eigenen Konto. Ohne sie steht im Menue ein
 # Platzhalter - der Eintrag zeigt auf »Icon=profilkoffer« ohne Pfad.
